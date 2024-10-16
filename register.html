@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poultry Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body {
+        background: url(register.gif) no-repeat;
+        background-size: contain;
+        height: 90vh;
+    }
+    .main {
+        max-width: 500px;
+        height: 650px;
+        position: relative;
+        left: 900px;
+        top: 30px;
+        border-radius: 30px;
+        box-shadow: 0px 0px 10px 2px rgb(0, 0, 0.25);
+    }
+    .credentials {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        top: 0px;
+        gap: 10px;
+    }
+    .main h1 {
+        text-align: center;
+        background: linear-gradient(to left, #E74C18, black);
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 2rem;
+    }
+    .credentials label {
+        padding-left: 20px;
+        position: relative;
+        top: 10px;
+        left: 10px;
+        font-size: 19px;
+        font-weight: 500;
+    }
+    .credentials input {
+        width: 80%;
+        position: relative;
+        border-radius: 20px;
+        padding: 10px;
+        left: 20px;
+        border: none;
+        font-weight: 600;
+        font-size: 1rem;
+        background: linear-gradient(to top left, hsl(356, 63%, 46%), #F8F5E8);
+        transition: border 0.3s;
+    }
+    .credentials input.valid {
+        border: 2px solid green;
+    }
+    .credentials input.invalid {
+        border: 2px solid red;
+    }
+    .submit button {
+        position: relative;
+        left: 200px;
+        top: 50px;
+        border: none;
+        width: 100px;
+        border-radius: 20px;
+        padding: 10px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 1rem;
+        background: linear-gradient(to bottom left, #E74C18, #F8F5E8);
+    }
+    .submit button:hover {
+        background: linear-gradient(to top left, #E74C18, #F8F5E8);
+    }
+    .check {
+        position: relative;
+        top: 20px;
+        left: 30px;
+    }
+    
+
+  .checkbox-wrapper-5 .check {
+    --size: 40px;
+
+    position: relative;
+    background: linear-gradient(90deg, #f19af3, #f099b5);
+    line-height: 0;
+    perspective: 400px;
+    font-size: var(--size);
+  }
+
+  .checkbox-wrapper-5 .check input[type="checkbox"],
+  .checkbox-wrapper-5 .check label,
+  .checkbox-wrapper-5 .check label::before,
+  .checkbox-wrapper-5 .check label::after,
+  .checkbox-wrapper-5 .check {
+    appearance: none;
+    display: inline-block;
+    border-radius: var(--size);
+    border: 0;
+    transition: .35s ease-in-out;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  .checkbox-wrapper-5 .check label {
+    width: calc(2.2 * var(--size));
+    height: var(--size);
+    background: #d7d7d7;
+    overflow: hidden;
+  }
+
+  .checkbox-wrapper-5 .check input[type="checkbox"] {
+    position: absolute;
+    z-index: 1;
+    width: calc(.8 * var(--size));
+    height: calc(.8 * var(--size));
+    top: calc(.1 * var(--size));
+    left: calc(.1 * var(--size));
+    background: linear-gradient(45deg, #dedede, #ffffff);
+    box-shadow: 0 6px 7px rgba(0,0,0,0.3);
+    outline: none;
+    margin: 0;
+  }
+
+  .checkbox-wrapper-5 .check input[type="checkbox"]:checked {
+    left: calc(1.3 * var(--size));
+  }
+
+  .checkbox-wrapper-5 .check input[type="checkbox"]:checked + label {
+    background: transparent;
+  }
+
+  .checkbox-wrapper-5 .check label::before,
+  .checkbox-wrapper-5 .check label::after {
+    content: "· ·";
+    position: absolute;
+    overflow: hidden;
+    left: calc(.15 * var(--size));
+    top: calc(.5 * var(--size));
+    height: var(--size);
+    letter-spacing: calc(-0.04 * var(--size));
+    color: #9b9b9b;
+    font-family: "Times New Roman", serif;
+    z-index: 2;
+    font-size: calc(.6 * var(--size));
+    border-radius: 0;
+    transform-origin: 0 0 calc(-0.5 * var(--size));
+    backface-visibility: hidden;
+  }
+
+  .checkbox-wrapper-5 .check label::after {
+    content: "●";
+    top: calc(.65 * var(--size));
+    left: calc(.2 * var(--size));
+    height: calc(.1 * var(--size));
+    width: calc(.35 * var(--size));
+    font-size: calc(.2 * var(--size));
+    transform-origin: 0 0 calc(-0.4 * var(--size));
+  }
+
+  .checkbox-wrapper-5 .check input[type="checkbox"]:checked + label::before,
+  .checkbox-wrapper-5 .check input[type="checkbox"]:checked + label::after {
+    left: calc(1.55 * var(--size));
+    top: calc(.4 * var(--size));
+    line-height: calc(.1 * var(--size));
+    transform: rotateY(360deg);
+  }
+
+  .checkbox-wrapper-5 .check input[type="checkbox"]:checked + label::after {
+    height: calc(.16 * var(--size));
+    top: calc(.55 * var(--size));
+    left: calc(1.6 * var(--size));
+    font-size: calc(.6 * var(--size));
+    line-height: 0;
+  }
+</style>
+
+</style>
+<body>
+
+    <div class="main">
+        <form onsubmit="btn(event)">
+            <div class="credentials">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="first-name" required>
+
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" name="last-name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="password">Password:</label>
+                <input type="" id="password" name="password" required>
+
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+
+            <div class="checkbox-wrapper-5">
+                <div class="check">
+                  <input id="check-5" type="checkbox" required>
+                  <label for="check-5"></label>
+                </div>
+              </div>
+              
+            <div class="submit">
+                <button type="submit" name="submit">Register</button>
+                <p id="message"></p>
+            </div>
+        </form>
+    </div>
+
+</body>
+<script>
+    function btn(event) {
+        event.preventDefault(); 
+        
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirm-password");
+        const message = document.getElementById("message");
+        
+        passwordInput.classList.remove("valid", "invalid");
+        confirmPasswordInput.classList.remove("valid", "invalid");
+
+        if (password !== confirmPassword) {
+            passwordInput.classList.add("invalid");
+            confirmPasswordInput.classList.add("invalid");
+            return;
+        } else {
+            passwordInput.classList.add("valid");
+            confirmPasswordInput.classList.add("valid");
+            message.innerHTML = '✔️ Registered Successfully';
+        message.style.color = "green";
+        message.style.fontWeight = "bold";
+        message.style.textAlign = "center";
+        message.style.marginTop = "50px";
+        }
+
+        setTimeout(function() {
+            window.location.href = "login.html";
+        }, 1500);
+    }
+</script>
+</html>

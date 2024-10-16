@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Egg Products</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://png.pngtree.com/png-vector/20240628/ourmid/pngtree-chicken-vector-carton-illustration-png-image_12913717.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="nav-bar">
+      <nav>
+        <img src="chicken.png" alt="" />
+        <div class="inputbox">
+          <input class="inp" placeholdr="Search" id="searchInput" />
+          <span>Search</span>
+        </div>
+        <i class="bx bx-search" id="searchButton"></i>
+        <span class="clear-search">&#x2715;</span>
+        <ul id="searchResults" class="search-results"></ul>
+        <a href="">HOME</a>
+
+        <div class="dropdown">
+          <a href="#" onclick="toggleDropdown(event)">PRODUCTS <span class="arrow" id="arrow">▼</span></a>
+          <div class="dropdown-content" id="dropdownContent">
+              <a href="eggs.html">Eggs</a>
+              <a href="index.html">Hens</a>
+              <a href="#product3">Product 3</a>
+          </div>
+        </div>
+
+        <a href="#contact">CONTACT</a>
+        <a href="home.html"><i class="bx bx-log-out" id="logout"></i></a>
+        <i class="bx bxs-cart-alt" id="cartButton"></i>
+      </nav>
+    </div>
+
+    <div class="heading">
+      <h1 id="head">Hello! 🖐️</h1>
+      <h1 class="head">Welcome To Egg Products</h1>
+    </div>
+
+    <div class="hens" id="hens">
+      <!-- White Eggs -->
+      <div class="hen" onclick="flipCard(this)">
+        <div class="front">
+          <img src="card-img.jpeg" alt="White Eggs" />
+          <div class="group">
+            <h2>White Eggs</h2>
+            <p> ₹100</p>
+          </div>
+        </div>
+        <div class="back">
+          <p><span>Description:</span> Traditional white-shelled eggs, rich in nutrients.</p>
+        </div>
+        <div class="btn">
+          <button onclick="addToCart(event)"><i class="bx bx-cart-add"></i></button>
+        </div>
+      </div>
+
+      <!-- Brown Eggs -->
+      <div class="hen" onclick="flipCard(this)">
+        <div class="front">
+          <img src="card-img.jpeg" alt="Brown Eggs" />
+          <div class="group">
+            <h2>Brown Eggs</h2>
+            <p> ₹120</p>
+          </div>
+        </div>
+        <div class="back">
+          <p><span>Description:</span> Known for their richer flavor and thicker shell compared to white eggs.</p>
+        </div>
+        <div class="btn">
+          <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+        </div>
+      </div>
+
+      <!-- Free-Range Eggs -->
+      <div class="hen" onclick="flipCard(this)">
+        <div class="front">
+          <img src="card-img.jpeg" alt="Free-Range Eggs" />
+          <div class="group">
+            <h2>Free-Range Eggs</h2>
+            <p> ₹150</p>
+          </div>
+        </div>
+        <div class="back">
+          <p><span>Description:</span> Laid by chickens that are free to roam outdoors, known for their bright yolk.</p>
+        </div>
+        <div class="btn">
+          <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+        </div>
+      </div>
+
+      <!-- Organic Eggs -->
+      <div class="hen" onclick="flipCard(this)">
+        <div class="front">
+          <img src="card-img.jpeg" alt="Organic Eggs" />
+          <div class="group">
+            <h2>Organic Eggs</h2>
+            <p> ₹180</p>
+          </div>
+        </div>
+        <div class="back">
+          <p><span>Description:</span> Produced by hens fed with organic feed, free from antibiotics and pesticides.</p>
+        </div>
+        <div class="btn">
+          <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+        </div>
+      </div>
+
+      <!-- Duck Eggs -->
+      <div class="hen" onclick="flipCard(this)">
+        <div class="front">
+          <img src="card-img.jpeg" alt="Duck Eggs" />
+          <div class="group">
+            <h2>Duck Eggs</h2>
+            <p> ₹200</p>
+          </div>
+        </div>
+        <div class="back">
+          <p><span>Description:</span> Larger and richer than chicken eggs, perfect for baking and gourmet dishes.</p>
+        </div>
+        <div class="btn">
+          <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+        </div>
+      </div>
+
+      <!-- Quail Eggs -->
+      <div class="hen" onclick="flipCard(this)">
+        <div class="front">
+          <img src="card-img.jpeg" alt="Quail Eggs" />
+          <div class="group">
+            <h2>Quail Eggs</h2>
+            <p> ₹220</p>
+          </div>
+        </div>
+        <div class="back">
+          <p><span>Description:</span> Small, nutrient-dense eggs with a delicate flavor, used in gourmet dishes.</p>
+        </div>
+        <div class="btn">
+          <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+        </div>
+      </div>
+
+      <!-- Omega-3 Enriched Eggs -->
+      <div class="hen" onclick="flipCard(this)">
+        <div class="front">
+          <img src="card-img.jpeg" alt="Omega-3 Enriched Eggs" />
+          <div class="group">
+            <h2>Omega-3 Enriched Eggs</h2>
+            <p> ₹240</p>
+          </div>
+        </div>
+        <div class="back">
+          <p><span>Description:</span> High in Omega-3 fatty acids, promoting heart health.</p>
+        </div>
+        <div class="btn">
+          <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+        </div>
+      </div>
+
+      <!-- Pasture-Raised Eggs -->
+      <div class="hen" onclick="flipCard(this)">
+        <div class="front">
+          <img src="card-img.jpeg" alt="Pasture-Raised Eggs" />
+          <div class="group">
+            <h2>Pasture-Raised Eggs</h2>
+            <p> ₹260</p>
+          </div>
+        </div>
+        <div class="back">
+          <p><span>Description:</span> Laid by chickens that graze on pasture, these eggs are nutrient-dense and delicious.</p>
+        </div>
+        <div class="btn">
+          <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+        </div>
+      </div>
+
+      <!-- Vitamin D Enriched Eggs -->
+      <div class="hen" onclick="flipCard(this)">
+        <div class="front">
+          <img src="card-img.jpeg" alt="Vitamin D Enriched Eggs" />
+          <div class="group">
+            <h2>Vitamin D Enriched Eggs</h2>
+            <p> ₹280</p>
+          </div>
+        </div>
+        <div class="back">
+          <p><span>Description:</span> Boosted with extra vitamin D, perfect for improving bone health.</p>
+        </div>
+        <div class="btn">
+          <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+        </div>
+      </div>
+    </div>
+
+    
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      .popup {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #28a745;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        display: none;
+        z-index: 1000;
+      }
+
+      .hen {
+        box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 10px;
+        height: 150px;
+      }
+      .popup.show {
+        display: block;
+        animation: fadeOut 3s forwards;
+      }
+
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+
+        90% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 0;
+        }
+      }
+
+      body {
+        opacity: 0;
+        overflow-x: hidden;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      body.fade-in {
+        opacity: 1;
+      }
+
+      body.fade-out {
+        opacity: 0;
+      }
+
+      .increment-button {
+        position: relative;
+        left: 260px;
+        top: -120px;
+        color: brown;
+        font-size: 30px;
+        width: 40px;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: all 0.6s ease-in-out;
+        background: linear-gradient(to top left, #f5deb3, hsl(30, 54%, 49%));
+      }
+
+      .decrement-button {
+        position: relative;
+        left: 150px;
+        top: -120px;
+        font-size: 30px;
+        color: brown;
+        width: 40px;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: all 0.6s ease-in-out;
+        background: linear-gradient(to top left, #f5deb3, hsl(30, 54%, 49%));
+      }
+
+      .buy-now-button:hover {
+        transform: scale(1.05);
+        background: linear-gradient(to bottom, #f5deb3, hsl(30, 54%, 49%));
+      }
+
+      .buy-now-button {
+        position: relative;
+        left: 1300px;
+        top: -140px;
+        font-size: 28px;
+        font-weight: 600;
+        width: 150px;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+        color: brown;
+        background: linear-gradient(to top left, #f5deb3, hsl(30, 54%, 49%));
+      }
+
+      .delete-button {
+        position: relative;
+        left: 300px;
+        top: -120px;
+        font-size: 28px;
+        width: 40px;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+        color: brown;
+        background: linear-gradient(to top left, #f5deb3, hsl(30, 54%, 49%));
+      }
+
+      .delete-button:hover {
+        transform: scale(1.1);
+      }
+
+      @keyframes openTrash {
+        0% {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .delete-button i {
+        animation: openTrash 0.4s ease-out;
+      }
+
+      .increment-button:hover {
+        transform: scale(1.05);
+        background: linear-gradient(to bottom, #f5deb3, hsl(30, 54%, 49%));
+      }
+
+      .decrement-button:hover {
+        transform: scale(1.05);
+        background: linear-gradient(to bottom, #f5deb3, hsl(30, 54%, 49%));
+      }
+
+      .delete-button:hover {
+        transform: scale(1.05);
+        background: linear-gradient(to bottom, #f5deb3, hsl(30, 54%, 49%));
+      }
+
+      .hen .group h2 {
+        font-size: 25px;
+        letter-spacing: 1px;
+        position: relative;
+        bottom: 130px;
+      }
+
+      .hen .group p,
+      .hen .group p #quantity {
+        font-size: 20px;
+        position: relative;
+        bottom: 160px;
+        left: 300px;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: opacity 0.5s ease-in;
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+      }
+
+      .modal.show-modal {
+        display: block;
+        opacity: 1;
+      }
+
+      .print-bill-button {
+        font-size: 20px;
+        color: brown;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 10px 20px;
+        background: linear-gradient(to top left, #f5deb3, hsl(30, 54%, 49%));
+        margin-top: 20px;
+      }
+
+      .print-bill-button:hover {
+        transform: scale(1.05);
+        background: linear-gradient(to bottom, #f5deb3, hsl(30, 54%, 49%));
+      }
+
+      .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close-button:hover,
+      .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .clear-search{
+        display: none;
+      }
+
+      .bx-search{
+        margin-left: 14px;
+      }
+
+      .clear-cart-button {
+        position: relative;
+        bottom: 135px;
+        right: 70px;
+        font-size: 28px;
+        font-weight: 600;
+        width: 190px;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+        color: brown;
+        background: linear-gradient(to top left, #f5deb3, hsl(30, 54%, 49%));
+      }
+      .clear-cart-button:hover {
+        transform: scale(1.05);
+        background: linear-gradient(to top, #f5deb3, hsl(30, 54%, 49%));
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="nav-bar">
+      <nav>
+        <img src="chicken.png" alt="" />
+        <div class="inputbox">
+          <input class="inp" placeholdr="Search" id="searchInput" oninput="filterProducts()"/>
+          <span>Search</span>
+        </div>
+        <i class="bx bx-search" id="searchButton"></i>
+        <span class="clear-search">&#x2715;</span>
+        <a href="index.html">HOME</a>
+    
+        
+        <div class="dropdown">
+          <a href="#" onclick="toggleDropdown(event)">PRODUCTS <span class="arrow" id="arrow">▼</span></a>
+          <div class="dropdown-content" id="dropdownContent">
+              <a href="Egg.html">Product 1</a>
+              <a href="#product2">Product 2</a>
+              <a href="#product3">Product 3</a>
+          </div>
+      </div>
+    
+        <a href="#contact">CONTACT</a>
+        <a href="home.html"><i class="bx bx-log-out" id="logout"></i></a>
+        <i class="bx bxs-cart-alt" id="cartButton"></i>
+      </nav>
+    </div>
+
+    <div id="deleteMessage" class="popup">Product deleted successfully!</div>
+
+    <div class="heading">
+      <h1 id="head">Your Cart</h1>
+      <h1 class="head">Review your order</h1>
+      <button id="buyNowButton" class="buy-now-button">Buy Now</button>
+      <button id="clearCartButton" class="clear-cart-button">Clear Cart</button>
+    </div>
+
+    <div class="hens" id="cartProducts"></div>
+
+    <div id="buyNowModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Order Summary</h2>
+        <div id="modalCartProducts"></div>
+
+        <div id="billPreview" style="margin-top: 20px"></div>
+
+        <button id="printBillButton" class="print-bill-button">
+          Preview Bill
+        </button>
+
+        <button
+          id="downloadBillButton"
+          class="print-bill-button"
+          style="display: none"
+        >
+          Download Bill
+        </button>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.14/jspdf.plugin.autotable.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.classList.add("fade-in");
+      });
+
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetUrl = e.target.href;
+          document.body.classList.add("fade-out");
+          setTimeout(() => {
+            window.location.href = targetUrl;
+          }, 500);
+        });
+      });
+
+      let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
+      const cartButton = document.querySelector(".bxs-cart-alt");
+
+      // Update cartProducts in localStorage
+      function updateCartProducts() {
+        localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+      }
+
+      // Display a message when a product is deleted
+      function displayDeleteMessage() {
+        const deleteMessage = document.getElementById("deleteMessage");
+        deleteMessage.classList.add("show");
+        setTimeout(() => {
+          deleteMessage.classList.remove("show");
+        }, 3000);
+      }
+
+      // Render the products in the cart
+      function renderCartProducts() {
+        const cartContainer = document.getElementById("cartProducts");
+        cartContainer.innerHTML = "";
+        if (cartProducts.length === 0) {
+          cartContainer.innerHTML =
+            '<p style="color:red;text-align:center;position:relative;left:500px;font-size:2rem;top:100px">Your cart is empty.</p>';
+          cartButton.innerHTML = `<sup style="color: red; font-size: 12px;">0</sup>`;
+          return;
+        }
+
+        cartProducts.forEach((product, index) => {
+          const productHTML = `
+            <div class="hen" id="product-${index}">
+                <div class="group">
+                    <h2>${product.name}</h2>
+                    <p>Quantity: <span id="quantity-${index}">${product.quantity}</span></p>
+                </div>
+                <div class="groups">
+                    <button class="increment-button" data-id="${index}">+</button>
+                    <button class="decrement-button" data-id="${index}">-</button>
+                    <button class="delete-button" data-id="${index}"><i class='bx bx-trash'></i></button>
+                </div>
+            </div>
+        `;
+          cartContainer.innerHTML += productHTML;
+        });
+        updateCartCount();
+        addEventListenersToButtons();
+      }
+
+      // Add event listeners to increment, decrement, and delete buttons
+      function addEventListenersToButtons() {
+        // Increment quantity
+        document.querySelectorAll(".increment-button").forEach((button) => {
+          button.addEventListener("click", (e) => {
+            const productId = e.target.dataset.id;
+            cartProducts[productId].quantity++;
+            updateCartProducts();
+            document.getElementById(`quantity-${productId}`).innerText =
+              cartProducts[productId].quantity;
+          });
+        });
+
+        // Decrement quantity
+        document.querySelectorAll(".decrement-button").forEach((button) => {
+          button.addEventListener("click", (e) => {
+            const productId = e.target.dataset.id;
+            if (cartProducts[productId].quantity > 1) {
+              cartProducts[productId].quantity--;
+              updateCartProducts();
+              document.getElementById(`quantity-${productId}`).innerText =
+                cartProducts[productId].quantity;
+            }
+          });
+        });
+
+        // Delete product
+        document.querySelectorAll(".delete-button").forEach((button) => {
+          button.addEventListener("click", (e) => {
+            const productId = e.target.dataset.id;
+            cartProducts.splice(productId, 1);
+            updateCartProducts();
+            renderCartProducts();
+            displayDeleteMessage();
+          });
+        });
+      }
+
+      // Update the cart count (based on unique products, not quantity)
+      function updateCartCount() {
+        const uniqueProductCount = cartProducts.length; // Count unique products
+        cartButton.innerHTML = `<sup style="color: red; font-size: 12px;">${uniqueProductCount}</sup>`;
+      }
+
+      // Display the cart products on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        renderCartProducts();
+      });
+
+      // Show modal on "Buy Now" click
+      document.getElementById("buyNowButton").addEventListener("click", () => {
+        const modal = document.getElementById("buyNowModal");
+        const modalCartProducts = document.getElementById("modalCartProducts");
+        modalCartProducts.innerHTML = "";
+        cartProducts.forEach((product) => {
+          const productHTML = `
+            <div>
+                <h3>${product.name}</h3>
+                <p>Quantity: ${product.quantity}</p>
+            </div>
+        `;
+          modalCartProducts.innerHTML += productHTML;
+        });
+        modal.classList.add("show-modal");
+      });
+
+      // Close modal on click of the close button
+      document.querySelector(".close-button").addEventListener("click", () => {
+        const modal = document.getElementById("buyNowModal");
+        modal.classList.remove("show-modal");
+      });
+
+      // Close modal on outside click
+      window.onclick = function (event) {
+        const modal = document.getElementById("buyNowModal");
+        if (event.target === modal) {
+          modal.classList.remove("show-modal");
+        }
+      };
+
+      // Function to generate the PDF for the bill
+
+      // Function to generate the bill and display it in the modal
+      document
+        .getElementById("printBillButton")
+        .addEventListener("click", () => {
+          const billPreview = document.getElementById("billPreview");
+          const printButton = document.getElementById("printBillButton");
+          const downloadButton = document.getElementById("downloadBillButton");
+
+          // Clear previous bill content
+          billPreview.innerHTML = "";
+
+          // Hide preview button, show download button
+          printButton.style.display = "none";
+          downloadButton.style.display = "block";
+
+          const currentDate = new Date();
+          const formattedDate = currentDate.toLocaleDateString();
+          const formattedTime = currentDate.toLocaleTimeString();
+
+          // Create the bill content for preview
+          let billContent = `<h2>Invoice Bill</h2>`;
+          billContent += `<p>Date: ${formattedDate}</p>`;
+          billContent += `<p>Time: ${formattedTime}</p>`;
+
+          billContent += `<table style="width:100%; border-collapse: collapse;">`;
+          billContent += `<thead><tr><th style="border: 1px solid black; padding: 5px;">Product</th><th style="border: 1px solid black; padding: 5px;">Quantity</th></tr></thead>`;
+          billContent += `<tbody>`;
+
+          cartProducts.forEach((product) => {
+            billContent += `<tr><td style="border: 1px solid black; padding: 5px;">${product.name}</td>`;
+            billContent += `<td style="border: 1px solid black; padding: 5px;">${product.quantity}</td></tr>`;
+          });
+
+          billContent += `</tbody></table>`;
+          billContent += `<h3>Thank you for shopping with us!</h3>`;
+
+          // Display the bill content in the modal
+          billPreview.innerHTML = billContent;
+        });
+
+      // Function to download the bill after preview
+      document
+        .getElementById("downloadBillButton")
+        .addEventListener("click", () => {
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF();
+          const currentDate = new Date();
+          const formattedDate = currentDate.toLocaleDateString();
+          const formattedTime = currentDate.toLocaleTimeString();
+
+          // Set document title
+          doc.setFontSize(22);
+          doc.text("Invoice Bill", 90, 20);
+
+          // Add date and time
+          doc.setFontSize(12);
+          doc.text(`Date: ${formattedDate}`, 20, 30);
+          doc.text(`Time: ${formattedTime}`, 20, 35);
+
+          // Prepare table header and rows for the products in the cart
+          const headers = [["Product", "Quantity"]];
+          const rows = cartProducts.map((product) => [
+            product.name,
+            product.quantity,
+          ]);
+
+          // Add the table using autoTable
+          doc.autoTable({
+            startY: 50,
+            head: headers,
+            body: rows,
+            theme: "grid", // Use 'grid' for a more professional-looking table
+            headStyles: { fillColor: [30, 144, 255] }, // Blue header
+            margin: { top: 10, left: 20, right: 20 },
+          });
+
+          // Add footer
+          const finalY = doc.lastAutoTable.finalY + 10; // Get the Y position after the table
+          doc.setFontSize(16);
+          doc.text("Thank you for shopping with us!", 60, finalY);
+
+          // Save the PDF
+          doc.save("Invoice.pdf");
+
+          // Hide the download button after the bill is downloaded
+          const downloadButton = document.getElementById("downloadBillButton");
+          downloadButton.style.display = "none";
+
+          // Show the preview button again for another preview if needed
+          const printButton = document.getElementById("printBillButton");
+          printButton.style.display = "block";
+        });
+
+      document
+        .getElementById("clearCartButton")
+        .addEventListener("click", clearCart);
+
+      function clearCart() {
+        // Clear the cart products array
+        cartProducts = [];
+
+        // Update localStorage to reflect the empty cart
+        updateCartProducts();
+
+        // Clear the cart items from the UI
+        renderCartProducts();
+
+        // Show the delete message
+        displayDeleteMessage();
+      }
+
+
+
+      // Function to filter and display the products based on search input
+function filterProducts() {
+  const searchInput = document.getElementById('searchInput').value.toLowerCase();
+  const cartProductsContainer = document.getElementById('cartProducts');
+  const products = cartProductsContainer.querySelectorAll('.hen');
+
+  let noMatches = true;
+
+  products.forEach((product) => {
+    const productName = product.querySelector('.group h2').textContent.toLowerCase();
+    if (productName.includes(searchInput)) {
+      product.style.display = ''; // Show the product if it matches
+      noMatches = false;
+    } else {
+      product.style.display = 'none'; // Hide the product if it doesn't match
+    }
+  });
+
+  if (noMatches) {
+    cartProductsContainer.innerHTML = '<p style="color:red;text-align:center;position:relative;left:500px;font-size:2rem;top:100px">No products match your search.</p>';
+  }
+}
+
+// Call this function when the page loads to initially render all products
+renderCartProducts();
+
+    </script>
+  </body>
+</html>

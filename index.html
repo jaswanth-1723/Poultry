@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poultry Breeds</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://png.pngtree.com/png-vector/20240628/ourmid/pngtree-chicken-vector-carton-illustration-png-image_12913717.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="nav-bar">
+      <nav>
+        <img src="chicken.png" alt="" />
+        <div class="inputbox">
+          <input class="inp" placeholdr="Search" id="searchInput" />
+          <span>Search</span>
+        </div>
+        <i class="bx bx-search" id="searchButton"></i>
+        <span class="clear-search">&#x2715;</span>
+        <ul id="searchResults" class="search-results"></ul>
+        <a href="">HOME</a>
+    
+        
+        <div class="dropdown">
+          <a href="#" onclick="toggleDropdown(event)">PRODUCTS <span class="arrow" id="arrow">▼</span></a>
+          <div class="dropdown-content" id="dropdownContent">
+              <a href="eggs.html">Eggs</a>
+              <a href="#product2">Product 2</a>
+              <a href="#product3">Product 3</a>
+          </div>
+      </div>
+    
+        <a href="#contact">CONTACT</a>
+        <a href="home.html"><i class="bx bx-log-out" id="logout"></i></a>
+        <i class="bx bxs-cart-alt" id="cartButton"></i>
+      </nav>
+    </div>
+    
+
+    <div class="heading">
+      <h1 id="head">Hello! 🖐️</h1>
+      <h1 class="head">Welcome to my Poultry</h1>
+    </div>
+
+    <div class="hens" id="hens">
+
+      
+
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Aseel"
+            />
+            <div class="group">
+              <h2>Aseel</h2>
+              <p> ₹500</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> Known for their courage and strength, often used for cockfighting.</p>
+            <p><span>Weight:</span> 3.5-4.5 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick="addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Kadaknath"
+            />
+            <div class="group">
+              <h2>Kadaknath</h2>
+              <p> ₹450</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> Renowned for their jet-black meat, high protein content, and unique flavor.</p>
+            <p><span>Weight:</span> 2.5-3.5 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Chittagong"
+            />
+            <div class="group">
+              <h2>Chittagong</h2>
+              <p> ₹550</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> Medium-sized birds known for their hardiness and good egg production.</p>
+            <p><span>Weight:</span> 2-3 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Busra"
+            />
+            <div class="group">
+              <h2>Busra</h2>
+              <p> ₹600</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> A dual-purpose breed, suitable for both meat and egg production.</p>
+            <p><span>Weight:</span> 3-4 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Naked Neck"
+            />
+            <div class="group">
+              <h2>Naked Neck</h2>
+              <p> ₹530</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> A unique breed characterized by the absence of feathers on their necks.</p>
+            <p><span>Weight:</span> 2-3 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Punjab"
+            />
+            <div class="group">
+              <h2>Punjab</h2>
+              <p> ₹490</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> A hardy breed known for its adaptability to various climatic conditions.</p>
+            <p><span>Weight:</span> 3-4 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Brown"
+            />
+            <div class="group">
+              <h2>Brown</h2>
+              <p> ₹470</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> A common breed with brown plumage, good for both meat and eggs.</p>
+            <p><span>Weight:</span> 2-3 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Ghagus"
+            />
+            <div class="group">
+              <h2>Ghagus</h2>
+              <p> ₹560</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> A large breed with a strong constitution, suitable for meat production.</p>
+            <p><span>Weight:</span> 3-4 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Orpington"
+            />
+            <div class="group">
+              <h2>Orpington</h2>
+              <p> ₹520</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> A large and friendly breed, known for good egg-laying and fluffy plumage.</p>
+            <p><span>Weight:</span> 3-4 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Leghorn"
+            />
+            <div class="group">
+              <h2>Leghorn</h2>
+              <p> ₹490</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> A prolific egg layer, known for being highly active and alert.</p>
+            <p><span>Weight:</span> 2.5-3.5 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Silkie"
+            />
+            <div class="group">
+              <h2>Silkie</h2>
+              <p> ₹580</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> Known for their fluffy plumage, gentle temperament, and good brooding instincts.</p>
+            <p><span>Weight:</span> 1.5-2.5 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Plymouth Rock"
+            />
+            <div class="group">
+              <h2>Plymouth Rock</h2>
+              <p> ₹600</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> A friendly breed known for its excellent egg production and hardiness.</p>
+            <p><span>Weight:</span> 2.5-3.5 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Cochin"
+            />
+            <div class="group">
+              <h2>Cochin</h2>
+              <p> ₹540</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> Known for their fluffy feathers and good nature, often kept as pets.</p>
+            <p><span>Weight:</span> 3-4 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Dominique"
+            />
+            <div class="group">
+              <h2>Dominique</h2>
+              <p> ₹470</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> An old American breed known for its good egg production and resilience.</p>
+            <p><span>Weight:</span> 2-3 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Faverolles"
+            />
+            <div class="group">
+              <h2>Faverolles</h2>
+              <p> ₹490</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> Known for their friendly nature and excellent egg-laying capabilities.</p>
+            <p><span>Weight:</span> 2.5-3.5 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Welsummer"
+            />
+            <div class="group">
+              <h2>Welsummer</h2>
+              <p> ₹530</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> A dual-purpose breed known for its rich brown eggs and friendly demeanor.</p>
+            <p><span>Weight:</span> 2.5-3.5 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+        <div class="hen" onclick="flipCard(this)">
+          <div class="front">
+            <img
+              src="card-img.jpeg"
+              alt="Ancona"
+            />
+            <div class="group">
+              <h2>Ancona</h2>
+              <p> ₹550</p>
+            </div>
+          </div>
+          <div class="back">
+            <p><span>Description:</span> Known for their unique speckled feathers and good egg production.</p>
+            <p><span>Weight:</span> 2-3 kg</p>
+            <p><span>LifeSpan:</span> 5-7 Years</p>
+          </div>
+          <div class="btn">
+            <button onclick=" addToCart(event)"><i class="bx bx-cart-add"></i></button>
+          </div>
+        </div>
+      
+      
+      
+
+    <div class="loading-animation" style="display: none">
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </div>
+
+    
+    <div class="contacts" id="contact">
+      <h2>Contact US</h2>
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <input
+          type="hidden"
+          name="access_key"
+          value="d9abc34a-6278-4a2a-b342-7eac24f8d334"
+        />
+        <div class="contact-inputs">
+          <input type="text" name="name" placeholder="Enter Name" />
+          <input type="email" name="email" placeholder="Enter Email" />
+          <textarea name="message" placeholder="Type Here...."></textarea>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+
+
+  </body>
+  <script src="script.js"></script>
+</html>
